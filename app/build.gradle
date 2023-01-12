@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId "com.mikirinkode.suitmediatest"
         minSdk 19
-        targetSdk 32
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
@@ -29,6 +29,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 }
 
