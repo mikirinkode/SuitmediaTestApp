@@ -30,7 +30,7 @@ class SecondScreenActivity : AppCompatActivity() {
             }
 
             btnBack.setOnClickListener {
-                onBackPressed()
+                onBackPressedDispatcher.onBackPressed()
             }
         }
     }

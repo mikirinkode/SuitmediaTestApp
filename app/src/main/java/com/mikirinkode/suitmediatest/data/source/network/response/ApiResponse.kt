@@ -6,18 +6,18 @@ import com.mikirinkode.suitmediatest.data.model.UserEntity
 data class ApiResponse(
 
 	@field:SerializedName("per_page")
-	val perPage: Int? = null,
+	val perPage: Int,
 
 	@field:SerializedName("total")
-	val total: Int? = null,
+	val total: Int,
 
 	@field:SerializedName("data")
-	val data: List<UserEntity?>? = null,
+	val data: List<UserEntity>,
 
 	@field:SerializedName("page")
-	val page: Int? = null,
+	val page: Int,
 
 	@field:SerializedName("total_pages")
-	val totalPages: Int? = null,
+	val totalPages: Int,
 
 )
