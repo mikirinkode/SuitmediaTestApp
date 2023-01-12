@@ -23,15 +23,19 @@ class FirstScreenActivity : AppCompatActivity() {
             btnCheck.setOnClickListener {
                 val sentence = edtPalindrome.text.toString().trim()
 
-                if (sentence.isNotEmpty()){
+                if (sentence.isNotEmpty()) {
                     if (isPalindrome(sentence)) {
-                        showMyDialog(this@FirstScreenActivity, getString(R.string.result), getString(
-                            R.string.is_palindrome
-                        ))
+                        showMyDialog(
+                            this@FirstScreenActivity, getString(R.string.result), getString(
+                                R.string.is_palindrome
+                            )
+                        )
                     } else {
-                        showMyDialog(this@FirstScreenActivity, getString(R.string.result), getString(
-                            R.string.not_palindrome
-                        ))
+                        showMyDialog(
+                            this@FirstScreenActivity, getString(R.string.result), getString(
+                                R.string.not_palindrome
+                            )
+                        )
                     }
                 } else {
                     edtPalindrome.error = getString(R.string.empty_field_message)
@@ -39,7 +43,18 @@ class FirstScreenActivity : AppCompatActivity() {
             }
 
             btnNext.setOnClickListener {
-                startActivity(Intent(this@FirstScreenActivity, SecondScreenActivity::class.java))
+                val name = edtName.text.toString().trim()
+
+                if (name.isNotEmpty()) {
+                    startActivity(
+                        Intent(
+                            this@FirstScreenActivity,
+                            SecondScreenActivity::class.java
+                        ).putExtra(SecondScreenActivity.EXTRA_NAME, name)
+                    )
+                } else {
+                    edtName.error = getString(R.string.empty_field_message)
+                }
             }
         }
     }

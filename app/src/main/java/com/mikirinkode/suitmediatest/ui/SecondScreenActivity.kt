@@ -15,11 +15,18 @@ class SecondScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        val extras = intent.extras
+
+
+
         binding.apply {
-            tvUserName.text = "Muhammad Wafa Al Ausath"
+            if (extras != null){
+                tvUserName.text = extras.getString(EXTRA_NAME)
+            }
 
             btnChooseUser.setOnClickListener {
-                startActivity(Intent(this@SecondScreenActivity, ThirdScreenActivity::class.java))
+                val intent = Intent(this@SecondScreenActivity, ThirdScreenActivity::class.java)
+                startActivityForResult(intent, SELECTED_NAME_CODE)
             }
 
             btnBack.setOnClickListener {
@@ -28,5 +35,18 @@ class SecondScreenActivity : AppCompatActivity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == SELECTED_NAME_CODE){
+            if (resultCode == RESULT_OK){
+                binding.tvSelectedUserName.text = data?.getStringExtra(EXTRA_SELECTED_NAME)
+            }
+        }
+    }
 
+    companion object {
+        const val EXTRA_NAME = "extra_name"
+        const val EXTRA_SELECTED_NAME = "extra_selected"
+        const val SELECTED_NAME_CODE = 1
+    }
 }
