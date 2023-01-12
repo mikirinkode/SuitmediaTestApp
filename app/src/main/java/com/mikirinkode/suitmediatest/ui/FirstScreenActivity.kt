@@ -1,4 +1,4 @@
-package com.mikirinkode.suitmediatest
+package com.mikirinkode.suitmediatest.ui
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.mikirinkode.suitmediatest.R
 import com.mikirinkode.suitmediatest.databinding.ActivityFirstScreenBinding
 
 class FirstScreenActivity : AppCompatActivity() {
@@ -21,10 +22,19 @@ class FirstScreenActivity : AppCompatActivity() {
         binding.apply {
             btnCheck.setOnClickListener {
                 val sentence = edtPalindrome.text.toString().trim()
-                if (isPalindrome(sentence)) {
-                    showMyDialog(this@FirstScreenActivity, "Result", "Is Palindrome")
+
+                if (sentence.isNotEmpty()){
+                    if (isPalindrome(sentence)) {
+                        showMyDialog(this@FirstScreenActivity, getString(R.string.result), getString(
+                            R.string.is_palindrome
+                        ))
+                    } else {
+                        showMyDialog(this@FirstScreenActivity, getString(R.string.result), getString(
+                            R.string.not_palindrome
+                        ))
+                    }
                 } else {
-                    showMyDialog(this@FirstScreenActivity, "Result", "Not Palindrome")
+                    edtPalindrome.error = getString(R.string.empty_field_message)
                 }
             }
 
