@@ -12,4 +12,5 @@
     <string name="not_palindrome">Not Palindrome</string>
     <string name="empty_field_message">This field cannot be empty.</string>
     <string name="try_again">Try Again</string>
+    <string name="fullname">%s %s</string>
 </resources>

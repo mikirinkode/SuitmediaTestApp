@@ -1,10 +1,8 @@
 package com.mikirinkode.suitmediatest.data.source.network
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.mikirinkode.suitmediatest.data.model.UserEntity
-import com.mikirinkode.suitmediatest.utils.Constants.NETWORK_PAGE_SIZE
 import com.mikirinkode.suitmediatest.utils.Constants.STARTING_PAGE_INDEX
 import retrofit2.HttpException
 import java.io.IOException

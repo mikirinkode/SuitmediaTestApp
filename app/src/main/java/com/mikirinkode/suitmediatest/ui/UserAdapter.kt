@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.mikirinkode.suitmediatest.R
 import com.mikirinkode.suitmediatest.data.model.UserEntity
 import com.mikirinkode.suitmediatest.databinding.ItemUserBinding
 
@@ -16,6 +17,7 @@ class UserAdapter : PagingDataAdapter<UserEntity, UserAdapter.UserViewHolder>(Us
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val binding = ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return UserViewHolder(binding)
@@ -41,7 +43,8 @@ class UserAdapter : PagingDataAdapter<UserEntity, UserAdapter.UserViewHolder>(Us
 
             binding.apply {
                 tvUserEmail.text = user.email
-                tvUserFullname.text = user.firstName + " " + user.lastName
+                tvUserFullname.text =
+                    itemView.resources.getString(R.string.fullname, user.firstName, user.lastName)
 
                 Glide.with(itemView)
                     .load(user.avatarUrl)
@@ -49,7 +52,6 @@ class UserAdapter : PagingDataAdapter<UserEntity, UserAdapter.UserViewHolder>(Us
             }
         }
     }
-
 
 
     interface OnItemClickCallback {

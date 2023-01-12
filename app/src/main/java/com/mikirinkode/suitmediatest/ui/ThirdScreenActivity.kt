@@ -3,27 +3,25 @@ package com.mikirinkode.suitmediatest.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mikirinkode.suitmediatest.databinding.ActivityThirdScreenBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ThirdScreenActivity : AppCompatActivity() {
 
     private val binding: ActivityThirdScreenBinding by lazy {
         ActivityThirdScreenBinding.inflate(layoutInflater)
     }
 
-    private lateinit var userViewModel: UserViewModel
+    private val userViewModel: UserViewModel by viewModels()
     private val adapter: UserAdapter by lazy { UserAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-
-        val factory = ViewModelFactory.getInstance(this)
-        userViewModel = ViewModelProvider(this, factory)[UserViewModel::class.java]
 
         initView()
         collectUiState()
